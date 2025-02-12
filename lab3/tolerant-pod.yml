@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tolerant-pod
+spec:
+  tolerations:
+  - key: "special-node"
+    operator: "Equal"
+    effect: "NoSchedule"
+    value: "true"
+  containers:
+  - name: nginx
+    image: nginx
