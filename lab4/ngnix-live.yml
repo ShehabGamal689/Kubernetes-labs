@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-live
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    livenessProbe:
+      httpGet:
+        path: /test.html
+        port: 80
+      periodSeconds: 5
+      failureThreshold: 3
