@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment-devops
+  namespace: haproxy-controller-devops
+  labels:
+    run: ingress-default-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ingress-default-backend
+  template:
+    metadata:
+      labels:
+        run: ingress-default-backend
+    spec:
+      containers:
+        - name: backend-container
+          image: k8s.gcr.io/defaultbackend-amd64:1.5
+
+          ports:
+            - containerPort: 8080
